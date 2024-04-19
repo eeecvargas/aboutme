@@ -1,106 +1,99 @@
+// Crear un puntaje:
+let score = 0;
 
-'use strict';
-
-let nombre = prompt('Por favor, ingresa tu nombre:');
-
-alert('Hola, un gusto. ' + nombre);
-
-let score=0;
-
-function preguntaUno (){
-    let meGustaBaskell = prompt('¿Me gusta el basketball? (si/no)');
-    console.log();
-    if (meGustaBaskell.toLowerCase() === 'si') {
-        alert('Es verdad, si me gusta.');
-        // console.log("Sabe que me gusta el baskell");
-        score++;
-    } else if (meGustaBaskell.toLowerCase() === 'no') {
-        alert('Que pena, en verdad si me gusta');
-        console.log('No sabe que me gusta el baskell');
-    }
-}
-function preguntaDos(){
-    let meGustaLeer = prompt('¿Me gusta leer? (si/no)');
-    if (meGustaLeer.toLowerCase() === 'si') {
-        alert('Es verdad, si me gusta.');
-        score++;
-        console.log('Sabe que me gusta leer');
-    } else if (meGustaLeer.toLowerCase() === 'no') {
-        alert('Que pena, en verdad si me gusta leer');
-        console.log('no sabe');
-    } 
-}
-function preguntaTres(){
-    let meGustaElCine = prompt('¿Me gusta el cine? (si/no)');
-    if (meGustaElCine.toLowerCase() === 'si') {
-        alert('Es verdad, si me gusta.');
-        console.log('Sabe que me gusta el cine');
-        score++;
-    } else if (meGustaElCine.toLowerCase() === 'no'){
-        alert('Que pena, en verdad si me gusta ver peliculas');
-        console.log('No sabe que me gusta el cine');
-    }
-}
-function preguntaCuatro(){
-    let preguntaFinal = prompt('Si ya sabemos que me gusta y que no me gusta, dependiendo de eso, ¿Crees que soy alguien de ver futbol? (si/no)');
-    if (preguntaFinal.toLowerCase() === 'si') {
-        alert('Pues no amigo/a, no veo partidos de futbol');
-        console.log('Me conoce bien');
-    } else if (preguntaFinal.toLowerCase() === 'no'){
-        alert('Perfecto, ya nos conocemos mejor');
-        console.log('No me conoce muy bien');
-        score++;
-    }
+function preguntaUno() {
+  console.log("Pregunta 1");
 }
 
-preguntaUno(), preguntaDos(), preguntaTres(), preguntaCuatro ();
+function preguntaDos() {
+  console.log("Pregunta 2");
+}
 
-let añoDeNacimiento ;
-let attempts = 0;
+// 4 oportunidades para responder esta pregunta, sino, le doy la respuesta.
+// usamos while:
+function preguntaSeis() {
+  let deporte;
+  let attempts = 0;
 
-while (añoDeNacimiento != 2001 && attempts < 4) {
-    añoDeNacimiento = prompt('¿En qué año nací entre (1999/2005)');
-    if (añoDeNacimiento < 2001){
-        alert ('No tan viejo amigo/a');
-        console.log ('No tan viejo amigo/a');
-    } else if (añoDeNacimiento > 2001) {
-        alert ('No soy tan joven');
-        console.log('No soy tan joven');
+  while (deporte != 3 && attempts < 5) {
+    correcto="Sí, espero es un futuro practicar varios deportes :)";
+    deporte = prompt("Cuántos deportes me gustaría practicar?");
+    ///attempts++;
+    if (deporte < 3) {
+      console.log("Demasiado bajo. Pista: Número de colores en la bandera de México");
+      alert("Demasiado bajo. Pista: Número de colores en la bandera de México");
+    } else if (deporte > 3) {
+      console.log("Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...");
+      alert("Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...");
     } else {
-        alert ('Es correcto')
-        console.log('Es correcto')
-        score++;
-        break;
-    }´
-    attempts++;
-    if(attempts=4){
-        alert('te quedastes si nintetno la res')
+      console.log(correcto);
+      alert(correcto);
+      score++;
     }
-}
-console.log ('Nací el 2001')
-alert ('Nací el 2001')
+    attempts++; // ESTO nos ayuda a prevenirr EL INFINITO.
+  }
+  console.log("Me gustaría practicar 3.");
 
-function preguntaSiete() {
-    let animalesFavoritos = ['perro','gato','hamster'];
-    let animal;
-    attempts = 0;
-    while (attempts <6) {
-        animal = prompt ('Adivina mi animal favorito');
-        animal = animal.toLowerCase();
-        for (let i = 0; i < animalesFavoritos.length; i++) {
-            if (animal == animalesFavoritos[i]) {
-                alert ('adivinaste!');
-                console.log ('adivinaste!');
-                attempts = 6;
-                break;
-            } else{
-                console.log (animal, '¡Incorrecto!, intento' + attempts + ' de 6');
-            }
+}
+
+
+
+function juegoAdivinanzas() {
+    const pregunta = "¿Cuál es un color primario? ";
+    const respuestasCorrectas = ["rojo", "azul", "amarillo"];
+
+    let intentosRestantes = 6;
+
+    while (intentosRestantes > 0) {
+        let respuestaUsuario = prompt(pregunta);
+        if (respuestasCorrectas.includes(respuestaUsuario.toLowerCase())) {
+            alert("Y sí, es correctoOoo!");
+            score++;
+            return; // Termina el juego si la respuesta es correcta
+        } else {
+            intentosRestantes = intentosRestantes - 1;
+            alert(`Incorrecto. Uno de ellos simboliza el amor. Vamos, tú puedes. Te quedan ${intentosRestantes} intentos :p`);
         }
-        attempts++;
     }
-console.log ('mis animales favoritos son ' + animalesFavoritos);
+    
+    alert(" Se acabaron los intentos :/ Lo siento. Fin del juego :P. Por si te quedaste con la duda, estas son las respueas: rojo, amarillo, azul.");
 }
-preguntaSiete();
 
-console.log('tu puntuación es de: ' + score);
+    
+preguntaUno();
+preguntaDos();
+// 3, 4, 5
+
+preguntaSeis();
+juegoAdivinanzas();
+console.log("Tu score es:  ${score}");
+alert("Tu score es ${score} ");
+
+preguntaSiete();
+/*
+const puntaje={
+    pregunta6: 0,
+    pregunta7: 0,
+}
+
+function preguntaSeis(){
+    if (deporte==3) {
+        puntaje.pregunta6++;
+    }
+}
+function juegoAdivinanzas(){
+    if (respuestaUsuario=respuestasCorrectas){
+        puntaje.pregunta7++;
+    }
+
+}
+
+function obtenerPuntajeTotal() {
+    // Sumar los puntajes de todas las preguntas
+    let puntajeTotal = 0;
+    for (const pregunta in puntaje) {
+      puntajeTotal += puntaje[pregunta];
+    }
+    return puntajeTotal;
+}
+alert(`¡Felicidades! Tu puntuación final es: ${obtenerPuntajeTotal()}`);*/
