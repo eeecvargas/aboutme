@@ -20,11 +20,11 @@ function preguntaSeis() {
     deporte = prompt("Cuántos deportes me gustaría practicar?");
     ///attempts++;
     if (deporte < 3) {
-      console.log("Demasiado bajo. Pista: Número de colores en la bandera de México");
-      alert("Demasiado bajo. Pista: Número de colores en la bandera de México");
+      console.log('Demasiado bajo. Pista: Número de colores en la bandera de México');
+      alert('Demasiado bajo. Pista: Número de colores en la bandera de México');
     } else if (deporte > 3) {
-      console.log("Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...");
-      alert("Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...");
+      console.log('Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...');
+      alert('Mmm. Demasiado alto. Me gustaría practicar esa cantidad de deportes, pero está por encima de lo que te tengo pensado...');
     } else {
       console.log(correcto);
       alert(correcto);
@@ -64,13 +64,37 @@ preguntaUno();
 preguntaDos();
 // 3, 4, 5
 
+
+function hacerPregunta(pregunta) {
+    let respuesta = prompt ( pregunta +  '(si/no)').toLowerCase();
+    console.log();
+    if (respuesta === 'si') {
+        alert('Es verdad.');
+        console.log('Correcto =' + pregunta.toLowerCase());
+        score++;
+    } else if (respuesta === 'no') {
+        alert('Incorrecto, ¡fallaste!');
+        console.log('Incorrecto' + pregunta.toLowerCase());
+    }
+}
+
+
+let preguntas = ['¿Uso lentes?','¿Me gusta la naturaleza?','¿Tengo abuelos?','¿Mi clima favorito es otoño?','¿Tengo hermanos?'];
+
+
+for (let i = 0; i < preguntas.length; i++) {
+    hacerPregunta(preguntas[i]);
+}
+
+
 preguntaSeis();
 juegoAdivinanzas();
-console.log("Tu score es:  ${score}");
-alert("Tu score es ${score} ");
+console.log("Tu score es: " + score);
+alert("Tu score es: " + score);
 
 preguntaSiete();
 /*
+
 const puntaje={
     pregunta6: 0,
     pregunta7: 0,
